@@ -3,68 +3,292 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
+    <title>Inner Light - Find Your Calm</title>
     <style>
+        /* Base Reset & Core Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-color: #121212;
+            color: #E0E0E0;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow-x: hidden;
+        }
+
+        /* Header / Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 4rem;
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            color: #FFFFFF;
+            text-transform: uppercase;
+        }
+
+        .logo svg {
+            fill: none;
+            stroke: #FFFFFF;
+            stroke-width: 1.5;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            color: #A0A0A0;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #FFFFFF;
+        }
+
+        /* Main Content Container */
+        main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Radiating Meditation Graphic Container */
+        .visualization-container {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            margin-bottom: 2rem;
             display: flex;
             justify-content: center;
             align-items: center;
         }
-        
-        .container {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            padding: 60px 40px;
-            text-align: center;
-            max-width: 600px;
-            width: 90%;
+
+        /* Subtle Background Aura Glow */
+        .aura-glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(235, 210, 165, 0.25) 0%, rgba(18, 18, 18, 0) 70%);
+            border-radius: 50%;
+            z-index: 1;
+            pointer-events: none;
+            animation: pulse 4s infinite ease-in-out;
         }
-        
+
+        .meditation-svg {
+            width: 100%;
+            height: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Typography & Interface Elements */
         h1 {
-            color: #333;
-            margin-bottom: 20px;
-            font-size: 2.5em;
+            font-size: 2.2rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+            color: #FFFFFF;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
         }
-        
+
         p {
-            color: #666;
+            font-size: 1rem;
+            color: #A0A0A0;
             line-height: 1.6;
-            font-size: 1.1em;
-            margin-bottom: 30px;
+            max-width: 550px;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
         }
-        
-        a {
-            display: inline-block;
-            background: #667eea;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 5px;
+
+        /* Primary Action Button */
+        .cta-btn {
+            background-color: #1E3A61;
+            color: #FFFFFF;
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background-color: #274D82;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(39, 77, 130, 0.3);
+        }
+
+        .cta-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Footer Layout */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #555555;
+            letter-spacing: 1px;
+        }
+
+        footer a {
+            color: #555555;
             text-decoration: none;
-            transition: background 0.3s ease;
-            margin: 5px;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
         }
-        
-        a:hover {
-            background: #764ba2;
+
+        footer a:hover {
+            color: #888888;
+        }
+
+        /* CSS Animations */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.15); opacity: 1; }
+        }
+
+        /* Responsive Design Rules */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+            nav ul {
+                gap: 1.2rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            p {
+                font-size: 0.95rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to My Site</h1>
-        <p>This is a simple HTML page deployed on GitHub Pages. Feel free to customize it with your own content!</p>
-        <a href="#about">Learn More</a>
-        <a href="#contact">Contact</a>
-    </div>
+
+    <!-- Header Navigation Bar -->
+    <header>
+        <div class="logo">
+            <!-- Minimal Lotus Logo Concept -->
+            <svg width="24" height="24" viewBox="0 0 24 24">
+                <path d="M12 22C12 22 7 17 7 13C7 10.2386 9.23858 8 12 8C14.7614 8 17 10.2386 17 13C17 17 12 22 12 22Z" />
+                <path d="M12 22C12 22 3 19 3 13C3 9 7 8 12 8" />
+                <path d="M12 22C12 22 21 19 21 13C21 9 17 8 12 8" />
+            </svg>
+            Inner Light
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#meditation">Meditation</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Viewport Context -->
+    <main>
+        <div class="visualization-container">
+            <div class="aura-glow"></div>
+            
+            <!-- Scalable Dynamic Vector Art: Meditating Silhouette with Radiant Aura Lines -->
+            <svg class="meditation-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <!-- Core Radiant Glow Gradient Profile -->
+                    <radialGradient id="centralGlow" cx="50%" cy="45%" r="50%">
+                        <stop offset="0%" stop-color="#FFEAD2" stop-opacity="0.6"/>
+                        <stop offset="40%" stop-color="#EBD2A5" stop-opacity="0.2"/>
+                        <stop offset="100%" stop-color="#121212" stop-opacity="0"/>
+                    </radialGradient>
+                </defs>
+
+                <!-- Ambient Core Backdrop Halo -->
+                <circle cx="200" cy="180" r="110" fill="url(#centralGlow)" />
+
+                <!-- Decorative Radiant Light Flare Rays -->
+                <g stroke="#EBD2A5" stroke-opacity="0.25" stroke-width="1" fill="none">
+                    <path d="M200 70 C200 40, 150 20, 100 20" />
+                    <path d="M200 70 C200 30, 200 10, 200 10" />
+                    <path d="M200 70 C200 40, 250 20, 300 20" />
+                    <path d="M140 130 C100 100, 60 90, 20 90" />
+                    <path d="M260 130 C300 100, 340 90, 380 90" />
+                    <path d="M130 200 C80 200, 40 220, 10 240" />
+                    <path d="M270 200 C320 200, 360 220, 390 240" />
+                </g>
+
+                <!-- Sharp Outer Energy Halo Ring -->
+                <circle cx="200" cy="180" r="62" fill="none" stroke="#FFEAD2" stroke-opacity="0.4" stroke-width="1" stroke-dasharray="4 8" />
+
+                <!-- Structured Human Form Figure Group -->
+                <g fill="#2C3D52" stroke="#EBD2A5" stroke-width="1.5" stroke-linejoin="round">
+                    <!-- Head Element -->
+                    <circle cx="200" cy="120" r="18" fill="#2C3D52" />
+                    <!-- Neck Element -->
+                    <path d="M195 137 L195 145 L205 145 L205 137 Z" />
+                    <!-- Torso & Draped Garments Layout -->
+                    <path d="M165 145 C180 145, 220 145, 235 145 L245 210 C220 225, 180 225, 155 210 Z" />
+                    <!-- Left Folded Leg System -->
+                    <path d="M160 210 C140 215, 120 235, 150 250 C180 255, 200 250, 210 245" />
+                    <!-- Right Folded Leg System -->
+                    <path d="M240 210 C260 215, 280 235, 250 250 C220 255, 200 250, 190 245" />
+                    <!-- Hands Connected in Mudra/Meditation Stance -->
+                    <path d="M185 220 C195 228, 205 228, 215 220 C210 225, 190 225, 185 220 Z" fill="#EBD2A5" />
+                </g>
+
+                <!-- Base Grounding Zafu/Meditation Mat Base Cushion -->
+                <path d="M130 252 C160 248, 240 248, 270 252 C295 256, 295 264, 270 268 C240 272, 160 272, 130 268 C105 264, 105 256, 130 252 Z" fill="#1A1A1A" stroke="#333333" stroke-width="1.5" />
+            </svg>
+        </div>
+
+        <h1>Find Your Calm.</h1>
+        <p>A simple guide to mindfulness and cultivating inner peace through meditation. Explore techniques to quiet the mind and connect with your inner radiance.</p>
+        
+        <button class="cta-btn">Start Meditating</button>
+    </main>
+
+    <!-- Footer Segment -->
+    <footer>
+        <p style="font-size: 0.75rem; margin-bottom: 0;">&copy; 2026 Inner Light Meditation. <a href="#privacy">Privacy</a> | <a href="#terms">Terms</a></p>
+    </footer>
+
 </body>
 </html>
